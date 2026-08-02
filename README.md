@@ -2,18 +2,6 @@
 
 Implementation of **Controllable Cross-Modal Consistency Repair for Audio-Visual Speech Separation**.
 
-The repository provides a complete waveform-to-waveform system with:
-
-- compressed complex spectral analysis and inverse synthesis;
-- an integrated mouth-motion encoder or pre-extracted visual embeddings;
-- stage-wise audio-visual representation learning;
-- shift-tolerant top-r consistency measurement;
-- forward-local reference tracking and selective repair;
-- cross-modal gating, bounded residual proposals, and verification;
-- alternating time/frequency sequence modeling;
-- magnitude-mask and phase reconstruction heads;
-- training, evaluation, inference, and JSONL manifest utilities.
-
 ## Layout
 
 ```text
