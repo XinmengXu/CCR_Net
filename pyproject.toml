@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ccr-avss"
+version = "1.0.0"
+description = "Controllable Cross-Modal Consistency Repair for audio-visual speech separation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Xinmeng Xu"},
+  {name = "Haoran Xie"},
+  {name = "S. Joe Qin"},
+  {name = "Lin Li"},
+  {name = "Xiaohui Tao"}
+]
+dependencies = [
+  "torch>=2.1",
+  "numpy>=1.24",
+  "soundfile>=0.12",
+  "PyYAML>=6.0",
+  "tqdm>=4.66"
+]
+
+[project.scripts]
+ccr-train = "commands.train:entrypoint"
+ccr-evaluate = "commands.evaluate:entrypoint"
+ccr-separate = "commands.separate:entrypoint"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ccr_avss*", "commands*"]

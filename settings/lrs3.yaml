@@ -1,0 +1,39 @@
+seed: 0
+
+data:
+  train_manifest: data/lrs3/train.jsonl
+  valid_manifest: data/lrs3/valid.jsonl
+  test_manifest: data/lrs3/test.jsonl
+  sample_rate: 16000
+  segment_seconds: 4.0
+  visual_kind: embedding
+  batch_size: 4
+  valid_batch_size: 1
+  workers: 4
+
+model:
+  sample_rate: 16000
+  visual_channels: 512
+  feature_channels: 64
+  av_stages: 4
+  context_blocks: 4
+  attention_heads: 4
+  fft_size: 512
+  hop_size: 256
+  window_size: 512
+  compression: 0.3
+  shift_radius: 5
+  leading_rank: 8
+  reference_momentum: 0.95
+  passthrough: 0.25
+  trust_ratio: 0.25
+  proposal_scale: 1.0
+
+optimization:
+  learning_rate: 0.00005
+  weight_decay: 0.0001
+  epochs: 250
+  gradient_clip: 5.0
+
+experiment:
+  directory: runs/lrs3
