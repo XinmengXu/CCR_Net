@@ -1,0 +1,53 @@
+seed: 0
+
+model:
+  sample_rate: 16000
+  visual_channels: 512
+  feature_channels: 64
+  num_av_stages: 4
+  num_tf_blocks: 4
+  n_fft: 512
+  hop_length: 256
+  win_length: 512
+  num_sources: 1
+  ccr_shift_radius: 5
+  ccr_rank: 8
+  ccr_ema_alpha: 0.95
+  ccr_passthrough: 0.25
+  ccr_trust_ratio: 0.25
+  ccr_step_size: 1.0
+
+video_frontend:
+  relu_type: prelu
+  pretrain: pretrain_zoo/lrw_resnet18_mstcn_adamw_s3.pth.tar
+
+data:
+  train_dir: preprocess/LRS2/tr
+  valid_dir: preprocess/LRS2/cv
+  test_dir: preprocess/LRS2/tt
+  n_src: 1
+  sample_rate: 16000
+  segment: 2.0
+  normalize_audio: false
+  batch_size: 4
+  num_workers: 8
+  pin_memory: true
+  persistent_workers: true
+
+optimization:
+  learning_rate: 0.00005
+  weight_decay: 0.0001
+  scheduler_patience: 10
+  scheduler_factor: 0.5
+  freeze_video_frontend: true
+
+trainer:
+  devices: auto
+  max_epochs: 250
+  accumulate_grad_batches: 1
+  gradient_clip_val: 5.0
+  early_stopping_patience: 20
+  log_every_n_steps: 20
+
+experiment:
+  output_dir: experiments/LRS2-CCRNet
